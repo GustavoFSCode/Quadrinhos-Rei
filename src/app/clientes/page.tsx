@@ -51,7 +51,7 @@ export default function Administradores() {
             <ContentContainer isExpanded={isExpanded}>
                 <Header>
                     <HeaderTop>
-                        <HeaderTitle>Clientes</HeaderTitle>
+                        <HeaderTitle>Clientes muito tristes com LES</HeaderTitle>
                     </HeaderTop>
                     <HeaderBottom>
                         <SearchAndActionsBox>
