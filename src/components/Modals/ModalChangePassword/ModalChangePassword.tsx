@@ -6,7 +6,7 @@ import Input from '@/components/Inputs/Input/Input';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import handleError from '@/utils/handleToast';
-import { Change2Schema, IChange2Form } from '@/validations/LoginSchema';
+import { ChangeySchema, IChangeForm } from '@/validations/LoginSchema';
 import { Box, BoxOverflow, Container } from '../styles';
 import { Form, Title } from './styles';
 import ModalSuccess from '../ModalSuccess/ModalSuccess';
@@ -15,7 +15,7 @@ import ModalDanger from '../ModalDanger/ModalDanger';
 interface Props {
   title: string;
   setShowModal: Dispatch<SetStateAction<boolean>>;
-  onSuccess: (form: IChange2Form) => void;
+  onSuccess: (form: IChangeForm) => void;
 }
 
 const ModalChangePassword = ({ title, setShowModal, onSuccess }: Props) => {
@@ -25,12 +25,12 @@ const ModalChangePassword = ({ title, setShowModal, onSuccess }: Props) => {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<IChange2Form>({
+  } = useForm<IChangeForm>({
     mode: 'onChange',
-    resolver: yupResolver(Change2Schema),
+    resolver: yupResolver(ChangeySchema),
   });
 
-  async function onSubmit(form: IChange2Form) {
+  async function onSubmit(form: IChangeForm) {
     try {
       onSuccess(form);
       setShowSuccessModal(true);
@@ -78,28 +78,20 @@ const ModalChangePassword = ({ title, setShowModal, onSuccess }: Props) => {
               <Title>{title}</Title>
               <Flex $direction="column" $gap="0.9375rem">
                 <Input
-                  id="password"
-                  type="password"
-                  label="Senha atual"
-                  placeholder="Digite sua senha..."
-                  {...register('password')}
-                  error={errors?.password?.message}
-                />
-                <Input
                   id="new_password"
                   type="password"
                   label="Nova senha"
                   placeholder="Digite sua senha..."
-                  {...register('new_password')}
-                  error={errors?.new_password?.message}
+                  {...register('password')}
+                  error={errors?.password?.message}
                 />
                 <Input
                   id="confirm_password"
                   type="password"
                   label="Confirme a nova senha"
                   placeholder="Confirme sua senha..."
-                  {...register('confirm_password')}
-                  error={errors?.confirm_password?.message}
+                  {...register('confirmPassword')}
+                  error={errors?.confirmPassword?.message}
                 />
               </Flex>
               <Flex $wrap="wrap" $justify="center" $gap="20px">
