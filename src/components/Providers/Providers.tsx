@@ -33,7 +33,7 @@ const Providers = ({ children }: PropsWithChildren) => {
           <GlobalStyle />
           <AuthProvider>
             <NextNProgress
-              color={theme.colors.primary}
+              color={theme.colors.secondary5}
               options={{ easing: 'ease', speed: 500 }}
             />
             {children}
