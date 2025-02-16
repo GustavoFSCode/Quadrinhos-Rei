@@ -5,7 +5,7 @@ import { useState } from 'react';
 import handleError from '@/utils/handleToast';
 import Input from '@/components/Inputs/Input/Input';
 import { Flex } from '@/styles/global';
-import { ChangeSchema, IChangeForm } from '@/validations/LoginSchema';
+import { ChangeySchema, IChangeForm } from '@/validations/LoginSchema';
 import ModalSuccess from '@/components/Modals/ModalSuccess/ModalSuccess';
 import {
   Container,
@@ -25,7 +25,7 @@ const ChangeForm = () => {
     handleSubmit,
     formState: { errors },
   } = useForm<IChangeForm>({
-    resolver: yupResolver(ChangeSchema),
+    resolver: yupResolver(ChangeySchema),
   });
 
   const onSubmit: SubmitHandler<IChangeForm> = async () => {
@@ -63,8 +63,8 @@ const ChangeForm = () => {
               label="Confirmar nova senha"
               type="password"
               placeholder="Confirme a senha"
-              {...register('confirm_password')}
-              error={errors?.confirm_password?.message}
+              {...register('confirmPassword')}
+              error={errors?.confirmPassword?.message}
             />
         </Flex>
 
