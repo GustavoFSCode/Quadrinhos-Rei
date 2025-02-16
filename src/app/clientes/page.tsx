@@ -16,7 +16,7 @@ import Filter from '@/components/icons/Filter';
 import Plus from '@/components/icons/Plus';
 import Lupa from '@/components/icons/Lupa';
 import Button from "@/components/Button";
-import InputText from "@/components/Input/InputText";
+import Input from "@/components/Inputs/Input/Input";
 import Navbar from "@/components/Navbar";
 import Barra from '@/components/icons/Barra';
 import Tabela from '@/components/Tables/Clientes';
@@ -56,13 +56,12 @@ export default function Administradores() {
                     <HeaderBottom>
                         <SearchAndActionsBox>
                             <StyledInputBox>
-                                <InputText
-                                    name="search"
+                                <Input
+                                    id="search"
                                     label=""
-                                    placeholder="Buscar pelo nome..."
+                                    placeholder="Buscar pelo nome"
                                     width="232px"
-                                    hasIcon={true}
-                                    icon={<Lupa />}
+                                    onChange={() => { }}
                                 />
                                 <Barra />
                             </StyledInputBox>
@@ -79,7 +78,7 @@ export default function Administradores() {
                                     variant="outline"
                                     width='103px'
                                     height='39px'
-                                    onClick={handleOpenFilterModal} // Abre o modal de filtro
+                                    onClick={handleOpenFilterModal}
                                 />
                                 <Button
                                     text={

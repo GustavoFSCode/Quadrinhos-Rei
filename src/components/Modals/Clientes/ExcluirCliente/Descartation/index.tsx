@@ -24,7 +24,7 @@ const ModalDescartation: React.FC<ModalDescartationProps> = ({ onClose }) => {
 
     const closeConfirmationModal = () => {
         onClose(true); // Fecha todos os modais
-        router.push('/clientes'); // Redireciona após fechar o modal principal
+        router.push('/administradores'); // Redireciona após fechar o modal principal
     };
 
     return (
@@ -33,24 +33,24 @@ const ModalDescartation: React.FC<ModalDescartationProps> = ({ onClose }) => {
                 <ModalBox>
                     <ModalContent>
                         <Image src={ExcludeIcon} width={60} height={60} alt="Check Icon" />
-                        <ModalText>Deseja excluir o cliente?</ModalText>
+                        <ModalText>Deseja excluir o administrador?</ModalText>
                         <ModalButtons>
-                            <Button
+                            <Button 
                                 text="Não"
-                                type="button"
+                                type="button" 
                                 variant="outline"
                                 className='red'
                                 width='100px'
-                                height='39px'
+                                height='39px' 
                                 onClick={handleCancel} // Usa a função handleCancel
                             />
-                            <Button
+                            <Button 
                                 text="Sim"
-                                type="button"
+                                type="button" 
                                 variant="red"
                                 width='100px'
-                                height='39px'
-                                onClick={handleSubmit}
+                                height='39px' 
+                                onClick={handleSubmit}       
                             />
                         </ModalButtons>
                     </ModalContent>

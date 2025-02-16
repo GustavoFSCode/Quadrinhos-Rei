@@ -13,9 +13,9 @@ const ModalConfirmation: React.FC<ModalConfirmationProps> = ({ onClose }) => {
     const router = useRouter();
 
     const handleSubmit = () => {
-        console.log('Cliente excluido!');
+        console.log('Administrador excluido!');
         onClose();
-        router.push('/clientes');
+        router.push('/administradores');
     };
 
     return (
@@ -23,14 +23,14 @@ const ModalConfirmation: React.FC<ModalConfirmationProps> = ({ onClose }) => {
             <ModalBox>
                 <ModalContent>
                     <Image src={CheckIcon} width={60} height={60} alt="Check Icon" />
-                    <ModalText>Cliente excluído!</ModalText>
-                    <Button
+                    <ModalText>Administrador excluído!</ModalText>
+                    <Button 
                         text="Continuar"
-                        type="button"
+                        type="button" 
                         variant="green"
                         width='120px'
-                        height='39px'
-                        onClick={handleSubmit}
+                        height='39px' 
+                        onClick={handleSubmit}       
                     />
                 </ModalContent>
             </ModalBox>

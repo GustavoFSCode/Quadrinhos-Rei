@@ -11,9 +11,9 @@ import {
   ModalBodyButton
 } from './styled';
 import Button from "@/components/Button";
-import InputPassword from "@/components/Input/InputPassword";
-import InputRead from "@/components/Input/InputRead";
-import InputEdit from "@/components/Input/InputEdit";
+import InputPassword from "@/components/Inputs/InputPassword";
+import InputRead from "@/components/Inputs/InputRead";
+import InputEdit from "@/components/Inputs/InputEdit";
 import ModalSuccess from '@/components/Modals/Perfil/Confirmation'; // Importação atualizada
 
 interface FormData {

@@ -5,40 +5,17 @@ import { useAuth } from '@/hooks/useAuth';
 import { usePathname, useRouter } from "next/navigation";
 import { SidebarContainer, TopIconContainer, IconPart, MiddleIconContainer, BottomIconContainer, TopIcon } from "./styled"
 import ModalLogout from '@/components/Modals/Logout';
+import { GiArtificialHive } from "react-icons/gi";
 
 import {
-    Rodadas,
-    Administradores,
     Jogadores,
-    Avaliacoes,
-    ChatComUsuario,
-    Saques,
-    Configuracoes,
-    Dashboard,
-    Faq,
-    Faturamento,
-    HistoricoDeJogos,
     Perfil,
     Sair,
-    Termos
 } from "../icons/notBold";
 import {
-    BoldRodadas,
-    BoldAdministradores,
     BoldJogadores,
-    BoldAvaliacoes,
-    BoldChatComUsuarios,
-    BoldSaques,
-    BoldConfiguracoes,
-    BoldDashboard,
-    BoldFaq,
-    BoldFaturamento,
-    BoldHistoricoDeJogos,
     BoldPerfil,
-    BoldTermos
 } from "../icons/bold";
-import MiniLogo from "../icons/MiniLogo";
-import LogoNav from '../icons/logoNav';
 import Seta from "../icons/Seta";
 
 interface NavbarProps {
@@ -73,7 +50,7 @@ const Navbar: React.FC<NavbarProps> = ({ isExpanded, setIsExpanded }) => {
     // Definição dos ícones e suas rotas com roles permitidas
     const menuItems = [
         { id: 'icon1', href: '/clientes', label: 'Clientes', Icon: Jogadores, BoldIcon: BoldJogadores, roles: [3, 6] },
-        { id: 'icon2', href: '/jogadores', label: 'Jogadores', Icon: Jogadores, BoldIcon: BoldJogadores, roles: [3, 6, 4, 5, 7] },
+        { id: 'icon2', href: '/chat-ia', label: 'Chat IA', Icon: GiArtificialHive, BoldIcon: GiArtificialHive, roles: [3, 6, 4, 5, 7] }
     ];
 
     const isActive = (path: string) => {

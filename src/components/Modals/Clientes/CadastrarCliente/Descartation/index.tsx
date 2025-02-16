@@ -13,7 +13,7 @@ const ModalDescartation: React.FC<ModalDescartationProps> = ({ onClose }) => {
 
     const handleSubmit = () => {
         onClose(true); // Indica que deve fechar todos os modais
-        router.push('/clientes'); // Redireciona após fechar o modal principal
+        router.push('/administradores'); // Redireciona após fechar o modal principal
     };
 
     const handleCancel = () => {
@@ -27,22 +27,22 @@ const ModalDescartation: React.FC<ModalDescartationProps> = ({ onClose }) => {
                     <Image src={ExcludeIcon} width={60} height={60} alt="Check Icon" />
                     <ModalText>Descartar alterações?</ModalText>
                     <ModalButtons>
-                        <Button
+                        <Button 
                             text="Não"
-                            type="button"
+                            type="button" 
                             variant="outline"
                             className='red'
                             width='100px'
-                            height='39px'
+                            height='39px' 
                             onClick={handleCancel} // Usa a função handleCancel
                         />
-                        <Button
+                        <Button 
                             text="Sim"
-                            type="button"
+                            type="button" 
                             variant="red"
                             width='100px'
-                            height='39px'
-                            onClick={handleSubmit}
+                            height='39px' 
+                            onClick={handleSubmit}       
                         />
                     </ModalButtons>
                 </ModalContent>

@@ -12,8 +12,6 @@ import {
     RadioButton
 } from './styled';
 import Button from '@/components/Button';
-import InputText from '@/components/Input/InputText';
-import InputPassword from "@/components/Input/InputPassword";
 import ModalConfirmation from "./Confirmation";
 import ModalDescartation from "./Descartation";
 
@@ -21,22 +19,10 @@ interface ModalCadastrarAdministradorProps {
     onClose: () => void;
 }
 
-const ModalCadastrarAdministrador: React.FC<ModalCadastrarAdministradorProps> = ({ onClose }) => {
-    const [formData, setFormData] = useState({
-        nome: '',
-        email: '',
-        acesso: '',
-        senha: '',
-        confirmarSenha: ''
-    });
+const ModalCadastrarCliente: React.FC<ModalCadastrarAdministradorProps> = ({ onClose }) => {
 
     const [isConfirmationModalOpen, setIsConfirmationModalOpen] = useState(false);
     const [isDescartationModalOpen, setIsDescartationModalOpen] = useState(false);
-
-    const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        const { name, value } = e.target;
-        setFormData(prev => ({ ...prev, [name]: value }));
-    };
 
     const handleSubmit = () => {
         setIsConfirmationModalOpen(true);
@@ -63,92 +49,8 @@ const ModalCadastrarAdministrador: React.FC<ModalCadastrarAdministradorProps> = 
         <>
             <ModalOverlay>
                 <ModalContent>
-                    <ModalHeader>Cadastrar cliente</ModalHeader>
-                    <ModalBodyTop>
-                        <InputText
-                            name="nome"
-                            label="Nome"
-                            placeholder="Digite o nome do administrador..."
-                            value={formData.nome}
-                            onChange={handleInputChange}
-                            width="460"
-                            height="38"
-                        />
-                        <InputText
-                            name="email"
-                            label="E-mail"
-                            placeholder="Digite o e-mail do administrador..."
-                            value={formData.email}
-                            onChange={handleInputChange}
-                            width="460"
-                            height="38"
-                        />
-                    </ModalBodyTop>
-                    <ModalBodyBottom>
-                        <RadioBox>
-                            <RadioTitle>Acesso</RadioTitle>
-                            <RadioGroup>
-                                <RadioButton>
-                                    <input
-                                        type="radio"
-                                        name="acesso"
-                                        value="Suporte"
-                                        checked={formData.acesso === 'Suporte'}
-                                        onChange={handleInputChange}
-                                    />
-                                    Suporte
-                                </RadioButton>
-                                <RadioButton>
-                                    <input
-                                        type="radio"
-                                        name="acesso"
-                                        value="Jogos"
-                                        checked={formData.acesso === 'Jogos'}
-                                        onChange={handleInputChange}
-                                    />
-                                    Jogos
-                                </RadioButton>
-                                <RadioButton>
-                                    <input
-                                        type="radio"
-                                        name="acesso"
-                                        value="Financeiro"
-                                        checked={formData.acesso === 'Financeiro'}
-                                        onChange={handleInputChange}
-                                    />
-                                    Financeiro
-                                </RadioButton>
-                                <RadioButton>
-                                    <input
-                                        type="radio"
-                                        name="acesso"
-                                        value="Admin"
-                                        checked={formData.acesso === 'Admin'}
-                                        onChange={handleInputChange}
-                                    />
-                                    Admin
-                                </RadioButton>
-                            </RadioGroup>
-                        </RadioBox>
-                        <InputPassword
-                            name="senha"
-                            label="Senha"
-                            placeholder="Digite a senha do administrador..."
-                            value={formData.senha}
-                            onChange={handleInputChange}
-                            width="460"
-                            height="40"
-                        />
-                        <InputPassword
-                            name="confirmarSenha"
-                            label="Confirmar Senha"
-                            placeholder="Confirme a senha do administrador..."
-                            value={formData.confirmarSenha}
-                            onChange={handleInputChange}
-                            width="460"
-                            height="40"
-                        />
-                    </ModalBodyBottom>
+                    <ModalHeader>Cadastrar Cliente</ModalHeader>
+
                     <ModalFooter>
                         <Button
                             text="Cancelar"
@@ -181,4 +83,4 @@ const ModalCadastrarAdministrador: React.FC<ModalCadastrarAdministradorProps> = 
     );
 };
 
-export default ModalCadastrarAdministrador;
+export default ModalCadastrarCliente;

@@ -4,10 +4,10 @@ import {
     ModalHeader,
     ModalTitle,
     ModalContent,
-    SelectBox,
-    SelectTitle,
-    SelectGroup,
-    SelectItem,
+    RadioBox,
+    RadioTitle,
+    RadioGroup,
+    RadioButton,
     ModalFooter,
     ArrowWrapper
 } from './styled';
@@ -15,41 +15,9 @@ import Button from '@/components/Button';
 import Closed from '@/components/icons/Closed';
 import UpArrow from '@/components/icons/UpArrow';
 import DownArrow from '@/components/icons/DownArrow';
-import CustomSelect from '@/components/Select'; // Atualizado para CustomSelect
-
-const brazilianStates = [
-    { value: '', label: 'Selecione' },
-    { value: 'AC', label: 'Acre' },
-    { value: 'AL', label: 'Alagoas' },
-    { value: 'AP', label: 'Amapá' },
-    { value: 'AM', label: 'Amazonas' },
-    { value: 'BA', label: 'Bahia' },
-    { value: 'CE', label: 'Ceará' },
-    { value: 'DF', label: 'Distrito Federal' },
-    { value: 'ES', label: 'Espírito Santo' },
-    { value: 'GO', label: 'Goiás' },
-    { value: 'MA', label: 'Maranhão' },
-    { value: 'MT', label: 'Mato Grosso' },
-    { value: 'MS', label: 'Mato Grosso do Sul' },
-    { value: 'MG', label: 'Minas Gerais' },
-    { value: 'PA', label: 'Pará' },
-    { value: 'PB', label: 'Paraíba' },
-    { value: 'PR', label: 'Paraná' },
-    { value: 'PE', label: 'Pernambuco' },
-    { value: 'PI', label: 'Piauí' },
-    { value: 'RJ', label: 'Rio de Janeiro' },
-    { value: 'RN', label: 'Rio Grande do Norte' },
-    { value: 'RS', label: 'Rio Grande do Sul' },
-    { value: 'RO', label: 'Rondônia' },
-    { value: 'RR', label: 'Roraima' },
-    { value: 'SC', label: 'Santa Catarina' },
-    { value: 'SP', label: 'São Paulo' },
-    { value: 'SE', label: 'Sergipe' },
-    { value: 'TO', label: 'Tocantins' },
-];
 
 interface FormData {
-    estado: string;
+    acesso: string[];
 }
 
 interface FilterModalProps {
@@ -57,8 +25,8 @@ interface FilterModalProps {
 }
 
 const FilterModal: React.FC<FilterModalProps> = ({ onClose }) => {
-    const [formData, setFormData] = useState<FormData>({ estado: '' });
-    const [isExpanded, setIsExpanded] = useState(false);
+    const [formData, setFormData] = useState<FormData>({ acesso: [] });
+    const [isExpanded, setIsExpanded] = useState(false); // Estado para controlar a expansão
 
     // Estado para controlar a visibilidade do modal
     const [isVisible, setIsVisible] = useState(false);
@@ -85,12 +53,20 @@ const FilterModal: React.FC<FilterModalProps> = ({ onClose }) => {
         setIsVisible(false);
     };
 
-    const handleSelectChange = (option: { value: string; label: string } | null) => {
-        setFormData({ estado: option ? option.value : '' });
+    const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+        const { value, checked } = event.target;
+
+        setFormData(prevData => {
+            if (checked) {
+                return { ...prevData, acesso: [...prevData.acesso, value] };
+            } else {
+                return { ...prevData, acesso: prevData.acesso.filter(item => item !== value) };
+            }
+        });
     };
 
     const clearFilters = () => {
-        setFormData({ estado: '' });
+        setFormData({ acesso: [] });
         console.log('Filtros limpos');
     };
 
@@ -105,34 +81,36 @@ const FilterModal: React.FC<FilterModalProps> = ({ onClose }) => {
                 <Closed onClick={handleClose} />
             </ModalHeader>
             <ModalContent>
-                <SelectBox>
-                    <SelectTitle>
-                        Estado
+                <RadioBox>
+                    <RadioTitle>
+                        Acesso
                         <ArrowWrapper onClick={toggleExpand}>
                             {isExpanded ? <UpArrow /> : <DownArrow />}
                         </ArrowWrapper>
-                    </SelectTitle>
-                    <SelectGroup isExpanded={isExpanded}>
-                        <SelectItem>
-                            <CustomSelect
-                                name="estado"
-                                options={brazilianStates}
-                                width="250px"
-                                height="40px"
-                                value={formData.estado}
-                                onChange={handleSelectChange}
-                            />
-                        </SelectItem>
-                    </SelectGroup>
-                </SelectBox>
+                    </RadioTitle>
+                    <RadioGroup isExpanded={isExpanded}>
+                        {['Suporte', 'Jogos', 'Financeiro', 'Admin'].map(option => (
+                            <RadioButton key={option}>
+                                <input 
+                                    type="checkbox" 
+                                    name="acesso" 
+                                    value={option} 
+                                    checked={formData.acesso.includes(option)}
+                                    onChange={handleInputChange}
+                                />
+                                {option}
+                            </RadioButton>
+                        ))}
+                    </RadioGroup>
+                </RadioBox>
             </ModalContent>
             <ModalFooter>
-                <Button
-                    text="Limpar"
-                    variant="outline"
-                    type="button"
-                    width="80px"
-                    height="36px"
+                <Button 
+                    text="Limpar" 
+                    variant="outline" 
+                    type="button" 
+                    width="80px" 
+                    height="36px" 
                     onClick={clearFilters}
                 />
             </ModalFooter>

@@ -9,14 +9,14 @@ export const FilterModalContainer = styled.div<{ isVisible: boolean }>`
     background-color: #fff;
     box-shadow: -2px 0 10px rgba(0, 0, 0, 0.1);
     border-radius: 20px 0 0 20px;
-    z-index: 1001;
-    padding: 20px;
-    overflow-y: hidden;
+    z-index: 1001; 
+    padding: 20px; 
+    overflow-y: hidden; 
 
     /* Animação de entrada e saída */
     transform: translateX(${props => props.isVisible ? '0' : '100%'});
     transition: transform 0.3s ease-in-out;
-
+    
     &::-webkit-scrollbar {
         width: 8px;
         border-radius: 10px;
@@ -71,12 +71,13 @@ export const ModalFooter = styled.div`
     border-top: 1px solid #e0e0e0;
 `;
 
-export const SelectBox = styled.div`
+// Novos componentes para os radios
+export const RadioBox = styled.div`
     display: flex;
     flex-direction: column;
 `;
 
-export const SelectTitle = styled.div`
+export const RadioTitle = styled.div`
     color: #454545;
     font-family: Primary;
     font-size: 20px;
@@ -100,17 +101,46 @@ export const ArrowWrapper = styled.div`
     align-items: center;
 `;
 
-export const SelectGroup = styled.div<{ isExpanded: boolean }>`
+export const RadioGroup = styled.div<{ isExpanded: boolean }>`
     display: flex;
     flex-direction: column;
     margin-top: 15px;
+    gap: 10px;
+    overflow: hidden; 
     max-height: ${({ isExpanded }) => (isExpanded ? '500px' : '0')};
-    overflow: hidden;
     transition: max-height 0.4s ease;
 `;
 
-export const SelectItem = styled.div`
+export const RadioButton = styled.label`
     display: flex;
-    flex-direction: column;
-    height: 400px;
+    align-items: center;
+    font-size: 18px;
+    cursor: pointer;
+
+    input {
+        margin-right: 8px;
+        appearance: none;
+        -moz-appearance: none;
+
+        position: relative;
+        height: 1rem;
+        width: 1rem;
+        min-width: 0.8125rem;
+        border-radius: 2.5px;
+        border: 1px solid var(--blue-100);
+        background: transparent;
+
+        &:checked {
+            background-image: url('/assets/images/SelectBoxv2.png');
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: contain;
+            border: none; 
+        }
+    }
+
+    span {
+        font-size: 14px;
+        color: #333;
+    }
 `;
