@@ -1,9 +1,9 @@
 // CustomSelect.tsx
 
-import React from "react"; 
+import React from "react";
 import Select, { StylesConfig } from "react-select";
 import { SelectWrapper, Label } from "./styled";
-import InputDate from "../Input/InputDate";
+import InputDate from "../Inputs/InputDate";
 import Button from "../Button";
 
 interface OptionType {
@@ -19,8 +19,8 @@ interface SelectProps {
   width?: string;
   height?: string;
   value?: string;
-  onChange?: (option: OptionType | null) => void; 
-  isDisabled?: boolean; 
+  onChange?: (option: OptionType | null) => void;
+  isDisabled?: boolean;
 }
 
 const CustomSelect: React.FC<SelectProps> = ({
@@ -71,7 +71,7 @@ const CustomSelect: React.FC<SelectProps> = ({
     placeholder: (provided) => ({
       ...provided,
       color: '#8c8c8c',
-      fontSize: '16px', 
+      fontSize: '16px',
     }),
     menu: (provided) => ({
       ...provided,

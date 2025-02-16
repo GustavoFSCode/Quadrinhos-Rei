@@ -6,8 +6,8 @@ import {
   DropdownItem,
   HiddenRadio,
   DropdownLabel,
-  DropdownArrow, 
-  CustomBox, 
+  DropdownArrow,
+  CustomBox,
   PersonalizedTittle,
   PersonalizedInput,
   PersonalizedButton
@@ -15,7 +15,7 @@ import {
 import ShapeUp from '@/components/icons/ShapeUp';
 import ShapeDown from '@/components/icons/ShapeDown';
 import Button from '@/components/Button';
-import InputDate from '@/components/Input/InputDate';
+import InputDate from '@/components/Inputs/InputDate';
 
 const options = [
   'Último dia',
@@ -115,13 +115,13 @@ const PeriodDropdown: React.FC = () => {
         <CustomBox>
           <PersonalizedTittle>Período personalizado</PersonalizedTittle>
           <PersonalizedInput>
-            <InputDate 
+            <InputDate
               name='dateInitial'
               label='De'
               width='125px'
               height='37px'
             />
-            <InputDate 
+            <InputDate
               name='dateFinal'
               label='Até'
               width='125px'
